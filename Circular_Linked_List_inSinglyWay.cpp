@@ -114,6 +114,16 @@ void deleteNode(Node* &tail,int value)
         }
         
         pre->next = curr->next;
+        
+        if(curr == pre)
+        {
+            tail = NULL;
+        }
+        
+        if(tail == curr)
+        {
+            tail = pre;
+        }
         curr->next = NULL;
         
         delete curr;
@@ -125,6 +135,11 @@ void print(Node* &tail)
 {
     Node* temp = tail;
     
+    if(tail == NULL)
+    {
+        cout<<"List is empty\n";
+        return;
+    }
     do{
         cout<<tail->data<<" ";
         tail = tail->next;
